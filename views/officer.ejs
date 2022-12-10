@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<title></title>
+</head>
+<style type="text/css">
+	.navbar{
+    background: #FFF;
+    color: #333;
+    position: sticky;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    align-items: center;
+}
+.navbar ul{
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+.navbar ul li a {
+    color: #333;
+    padding:.75rem;
+    margin: 0 .25rem;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+.navbar ul li a:hover{
+    background: var(--primary-color);
+    color: #fff;
+}
+.logo2{
+    max-height: 45px;
+}
+.logo2 img{
+    display: block;
+    height: 45px;
+}
+
+
+</style>
+<body>
+  <nav class="navbar">
+    <div class="logo2">
+        <img src="C:\nodejs-image-upload-master (3)\nodejs-image-upload-master\uploads\image\photo_1670678148707.png" alt="">
+    </div>
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#what">What</a></li>
+        <li><a href="#who">Who</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+<div id="map"></div>
+<div class="container" style="padding: 15px;">
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Picture</th>
+      <th scope="col">Area</th>
+      <th scope="col">Map</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>1.414 sq meter</td>
+      <td>
+      	<a href="/map">View Map</a>
+      </td>
+      <td>
+      	<img style="width: 100px; height: 100px" src="image/Soil Gray.png">
+      </td>
+    </tr>
+   
+  </tbody>
+  <tbody>
+
+  </table>
+</div>
+
+</body>
+
+</html>

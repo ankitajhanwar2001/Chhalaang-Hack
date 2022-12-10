@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly"
+      defer
+    ></script>
+    <style type="text/css">
+      #map {
+  height: 400px;
+  /* The height is 400 pixels */
+  width: 100%;
+  /* The width is the width of the web page */
+}
+    </style>
+<body>
+
+<p>Click the button to get your coordinates.</p>
+
+<!-- <button onclick="getLocation()">Try It</button> -->
+
+<div id="map"></div>
+
+
+
+</body>
+<script>
+var x = document.getElementById("demo");
+
+function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: 19.06905723192813, lng: 72.86232567829589},
+            scrollwheel: false,
+            zoom: 10,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            streetViewControl: true
+            });
+
+
+
+let latlon = [[19.06905723192813, 72.86232567829589],
+[19.069056858877868, 72.86233348621239],
+[19.06902751710284, 72.86232072653944]];
+
+var triangleCoords = [
+        new google.maps.LatLng(19.06905723192813, 72.86232567829589),
+        new google.maps.LatLng(19.069056858877868, 72.86233348621239),
+        new google.maps.LatLng(19.06902751710284, 72.86232072653944)
+        ];
+
+var bounds = new google.maps.LatLngBounds();
+
+// extend bounds to contain each coordinate
+for (var i = 0, i_end = triangleCoords.length; i < i_end; i++) {
+    bounds.extend(triangleCoords[i]);
+}
+
+// get the NSEW corners of the bounds
+var NE = bounds.getNorthEast();
+var SW = bounds.getSouthWest();
+var SE = { lat: SW.lat(), lng: NE.lng() };
+var NW = { lat: NE.lat(), lng: SW.lng() };
+
+// Construct the polygon.
+var areaCovered = new google.maps.Polygon({
+    paths: [NE, SE, SW, NW],
+    strokeColor: '#FF0000',
+    strokeOpacity: 0.8,
+    strokeWeight: 2,
+    fillColor: '#FF0000',
+    fillOpacity: 0.25
+});
+
+areaCovered.setMap(map);
+
+
+}
+
+
+</script>
+</html>

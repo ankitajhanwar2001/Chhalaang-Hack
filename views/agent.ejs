@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+   <!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+	<title>Field Survey</title>
+  <style>
+    .navbar{
+    background: #FFF;
+    color: #333;
+    position: sticky;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    align-items: center;
+}
+.navbar ul{
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+.navbar ul li a {
+    color: #333;
+    padding:.75rem;
+    margin: 0 .25rem;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+.navbar ul li a:hover{
+    background: var(--primary-color);
+    color: #fff;
+}
+.logo2{
+    max-height: 45px;
+}
+.logo2 img{
+    display: block;
+    height: 45px;
+}
+    .container {
+      margin: auto;
+      width: 60%;
+      border: 3px solid #73AD21;
+      padding: 10px;
+      text-align: center;
+    }
+    </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo2">
+        <img src="logo.png" alt="">
+    </div>
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#what">What</a></li>
+        <li><a href="#who">Who</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+  <div class="container my-4">
+    <button type="button" class="btn btn-primary" onclick="getLocation()">Measure</button>
+    <button type="button" class="btn btn-info mx-4" onclick="GetArea(distanceCoordinatestocart(distanceCoordinates))">Done</button>
+    <br /><br /> <br />
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+      <input class="form-control-file" type="file" accept="image/*" name="photo" >
+      <input class="btn mt-3" type="submit" value="upload">
+      <!-- <input type="file" id="myFile" name="filename"> -->
+    </form>
+    <br /><br /> <br />
+    <label>Describe the Soil Type: </label>
+    <br />
+    <textarea placeholder="Enter Soil type"></textarea>
+    <br /><br /> <br />
+    <button type="button" class="btn btn-success">Submit Survey</button>
+   </div>
+   <div>
+    
+   </div>
+</body>
+<script type="text/javascript">
+	let distanceCoordinates = [];
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+
+}
+
+function showPosition(position) {
+  distanceCoordinates.push([position.coords.latitude,position.coords.longitude]);
+  console.log(distanceCoordinates);
+}
+
+function GetArea(polygon) {
+  const length = polygon.length;
+
+  let sum = 0;
+
+  for (let i = 0; i < length; i += 2) {
+    sum +=
+      polygon[i] * polygon[(i + 3) % length] -
+      polygon[i + 1] * polygon[(i + 2) % length];
+  }
+
+  console.log('area: ',Math.abs(sum) * 0.5);
+}
+
+function distanceCoordinatestocart(distanceCoordinates) {
+  let latAnchor = distanceCoordinates[0][0];
+  let lonAnchor = distanceCoordinates[0][1];
+  let x = 0;
+  let y = 0;
+  let R = 6378137; //radius of earth
+
+  let pos = [];
+
+  for (let i = 0; i < distanceCoordinates.length; i++) {
+    let xPos =
+      (distanceCoordinates[i][1] - lonAnchor) * ConvertToRadian(R) * Math.cos(latAnchor);
+    let yPos = (distanceCoordinates[i][0] - latAnchor) * ConvertToRadian(R);
+
+    pos.push(xPos, yPos);
+  }
+  return pos;
+}
+
+function ConvertToRadian(input) {
+  return (input * Math.PI) / 180;
+}
+
+// let distanceCoordinates = [
+//   [9.9847583, 76.578329],
+//   [9.984835, 76.578337],
+//   [9.984858, 76.578173],
+//   [9.984768, 76.578166],
+// ];
+
+// let distanceCoordinates = [[19.06905723192813, 72.86232567829589],
+// [19.069056858877868, 72.86233348621239],
+// [19.06902751710284, 72.86232072653944]];
+
+//GetArea(distanceCoordinatestocart(distanceCoordinates))
+</script>
+</html>

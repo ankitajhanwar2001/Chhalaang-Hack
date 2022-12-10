@@ -1,0 +1,279 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+:root{
+    --primary-color:#35AE4B; 
+}/*agar poora css scope chahiye toh root verna star.*/
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Roboto',sans-serif;
+    line-height: 1.4;
+}
+a{
+    text-decoration: none;
+}
+textarea{
+    resize: none;
+}
+/*UTILITY CLASSES*/
+.container{
+    max-width: 1100px;/*scren ki size ke hisaab se width leta hai*/
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+.text-center{
+    text-align: center;
+}
+.text-primary{
+    color: var(--primary-color);
+}
+.bg-light{
+    color: #F4F4F4;
+    color: #333;
+}
+.bg-dark{
+    background: #333;
+    color: #FFF;
+}
+.bg-primary{
+    background: var(--primary-color);
+    color: #FFF;
+}
+.btn{
+    display: inline-block;
+    color: #FFF;
+    background: var(--primary-color);
+    padding: .5rem 2rem;
+    border: none;
+    border-radius: 5px;
+    transition: background .3s;
+}
+.btn-dark{
+    background:#333;
+}
+.btn:hover{
+    background: rgb(145,63,48);
+    cursor: pointer;
+}
+.py{
+    padding: 0.5rem 0;
+}
+.py-1{
+    padding: 1.5rem 0;
+}
+.py-2{
+    padding: 2rem 0;
+}
+.py-3{
+    padding: 3rem 0;
+}
+.p-1{
+    padding: 1.5rem;
+}
+.p-2{
+    padding: 2rem;
+}
+.p-3{
+    padding: 3rem;
+}
+.l-heading{
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+}
+.m-heading{
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.1;
+}
+.lead{
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+ul.list{
+    margin: 0.5rem 0;
+    list-style: none;
+}
+ul.list li{
+    padding: 0.5rem 0;
+    border-bottom: dotted 2px #444;
+}
+/*NAVBAR*/
+.navbar{
+    background: #FFF;
+    color: #333;
+    position: sticky;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    align-items: center;
+}
+.navbar ul{
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+.navbar ul li a {
+    color: #333;
+    padding:.75rem;
+    margin: 0 .25rem;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+.navbar ul li a:hover{
+    background: var(--primary-color);
+    color: #fff;
+}
+.logo2{
+    max-height: 45px;
+}
+.logo2 img{
+    display: block;
+    height: 45px;
+}
+/*showcase*/
+.showcase{
+    background: url('../images/showcase.png') no-repeat center center;/*for backup 333 diya hai incase image na aaye to background dikhe*/
+    height: 100vh;
+    background-size: cover;
+    color: #FFF;
+    
+}
+.showcase-content{
+    background:#333=;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+}
+.showcase-content .btn{
+    margin-right: 2rem;
+}
+/*SECTION-WHAT*/
+.items{
+    display:flex;
+    margin: 2rem 0;
+    justify-content: space-between;
+}
+#what .items .item{
+    padding: 1rem;
+    border-radius: 5px;
+}
+#what .items .item:hover{
+    background: var( --primary-color);
+    color: #FFF;
+    transition: all .3s;
+    cursor: pointer;
+}
+ #what .items .item i{
+   background: var( --primary-color);
+     color: #FFF;
+     display: inline-block;
+     width: 4rem;
+     height: 4rem;
+     border-radius: 50%;
+     line-height: 4rem;
+     margin-bottom: 1rem;
+     transition: all .3s;
+}
+#what .items .item:hover i{
+    background: #FFF;
+     color: var( --primary-color);;
+}
+/*SECTION WHO*/
+#who{
+    display: flex;
+}
+#who>div{
+    flex: 1;
+}
+.who-img{
+    background: url(../images/people.jpg) no-repeat center center;
+    background-size: cover;
+}
+
+/**logo***/
+#clients .items2 .clients-logo img{
+    width: 100%;
+    
+}
+.items2{
+    display:flex;
+    margin: 2rem 0;
+}
+/*SECTION CONTACTS*/
+.form-group{
+    margin-bottom: 0.75rem;
+}
+.form-group label{
+    display: block;
+}
+.form-group input,
+.form-group textarea{
+    padding: 0.5rem;
+    width: 100%;
+}
+#contact{
+    display: flex;
+}
+#contact>div{
+    flex:1;
+}
+::selection {
+    background: rgba(200, 70, 48, .6);
+    color: #FFF;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, .2);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+    background: rgba(200, 70, 48, .6);
+}
+
+@media(max-width:550px){
+    .navbar{
+        flex-direction: column;
+    }
+    .navbar .logo{
+        margin-bottom: .85rem;
+    }
+    .l-heading{
+        font-size: 2.6rem;
+    }
+    .lead{
+        font-size: 1.1rem;
+    }
+    .items{
+        flex-direction: column;
+    }
+    #who{
+        flex-direction: column;
+    }
+    #who>div{
+        flex: none;
+    }
+    .who-img{
+        height: 300px;
+    }
+    #contact{
+        flex-direction: column;
+    }
+    #map{
+        height: 400px;
+    }
+}
